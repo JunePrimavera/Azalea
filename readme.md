@@ -38,7 +38,7 @@ This function will attempt an SSH connection to the given address, and username,
 
 ## - Math
 
-### - `struct f16 {}
+### - `struct f16 {}`
 
 16-bit floating point numbers. Rust by default does not come with 16-bit numbers, which are much more memory efficient to operate on and store. They may be slower sometimes due to lack of hardware acceleration.
 
