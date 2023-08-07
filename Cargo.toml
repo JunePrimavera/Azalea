@@ -1,0 +1,11 @@
+[package]
+name = "Azalea"
+version = "0.4.3"
+authors = ["Juniper"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# Using as few dependencies as possible for faster build time
+[dependencies]
+ssh2 = "0.9.1"
+rayon = "1.5.1"
