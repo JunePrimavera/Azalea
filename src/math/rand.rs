@@ -29,3 +29,19 @@ pub fn random_f64(range: Range<f64>) -> f64 {
     let rand_f64 = f64::from_bits(0x3FF0000000000000 | (u64::from_le_bytes(buffer) >> 12));
     range.start + rand_f64 * (range.end - range.start)
 }
+
+/// Generates a random 32-bit float vector
+pub fn random_vecf32(values : usize, range : Range<f32>) {
+    let mut vec = vec![];
+    for _ in 0..values {
+        vec.push(random_f32(range.clone()))
+    }
+}
+
+/// Generates a random 64-bit float vector
+pub fn random_vecf64(values : usize, range : Range<f64>) {
+    let mut vec = vec![];
+    for _ in 0..values {
+        vec.push(random_f64(range.clone()))
+    }
+}
