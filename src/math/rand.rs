@@ -3,26 +3,29 @@ Copyright Juniper Gardiner - MIT
 Jul 24 2023
 */
 
+use std::fs::File;
+use std::io::Read;
 use std::ops::Range;
 use std::time::{SystemTime, UNIX_EPOCH};
 
-/// Generates a random byte (u8)
-pub fn random_byte() -> u8 {
-    let mut state : u64 = SystemTime::now().duration_since(UNIX_EPOCH).expect("Time went backwards").as_nanos() as u64;
-    state = state.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
-    ((state >> 32) as u8).wrapping_mul(2)
+/// Generates random bytes
+fn generate_random_bytes(buffer: &mut [u8]) {
+    let mut rng = File::open("/dev/urandom").expect("Cant access /dev/urandom!");
+    rng.read_exact(buffer).expect("Error generating random bytes");
 }
 
 /// Generates a random 32-bit float
 pub fn random_f32(range: Range<f32>) -> f32 {
-    let rand_u8: u8 = random_byte();
-    let rand_f32 : f32 = range.start + (f32::from(rand_u8) / 255.0) * (range.end - range.start);
-    rand_f32
+    let mut buffer = [0u8; 4];
+    generate_random_bytes(&mut buffer);
+    let rand_f32 = f32::from_bits(0x3F800000 | (u32::from_le_bytes(buffer) >> 9));
+    range.start + rand_f32 * (range.end - range.start)
 }
 
 /// Generates a random 64-bit float
 pub fn random_f64(range: Range<f64>) -> f64 {
-    let rand_u8: u8 = random_byte();
-    range.start + (f64::from(rand_u8) / 255.0) * (range.end - range.start)
+    let mut buffer = [0u8; 8];
+    generate_random_bytes(&mut buffer);
+    let rand_f64 = f64::from_bits(0x3FF0000000000000 | (u64::from_le_bytes(buffer) >> 12));
+    range.start + rand_f64 * (range.end - range.start)
 }
-

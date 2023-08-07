@@ -4,7 +4,6 @@ Jul 24 2023
 */
 
 use std::f32;
-use std::f64;
 use std::ops::Sub;
 
 /// Sigmoid function
