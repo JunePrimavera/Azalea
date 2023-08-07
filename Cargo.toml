@@ -8,4 +8,3 @@ authors = ["Juniper"]
 # Using as few dependencies as possible for faster build time
 [dependencies]
 ssh2 = "0.9.1"
-rayon = "1.5.1"
