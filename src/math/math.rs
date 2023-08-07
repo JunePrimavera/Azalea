@@ -5,30 +5,21 @@ Jul 24 2023
 
 use std::f32;
 use std::f64;
+use std::ops::Sub;
 
-/// Sigmoid function (f32)
-pub fn sigmoidf32(x : f32) -> f32 { 1.0 / (1.0 + f32::consts::E.powf(-x)) }
-/// Sigmoid function (f64)
-pub fn sigmoidf64(x : f64) -> f64 { 1.0 / (1.0 + f64::consts::E.powf(-x)) }
+/// Sigmoid function
+pub fn sigmoid<T: Into<f32>>(x: T) -> f32 {
+    let x_f64 = x.into();
+    1.0 / (1.0 + (-x_f64).exp())
+}
 
-/// Sigmoid derivative function (f32)
-pub fn sigmoid_derivativef32(x : f32) -> f32 {
-    let s : f32 = sigmoidf32(x);
+/// Sigmoid derivative function
+pub fn sigmoid_derivative<T: Into<f32> + Copy>(x: T) -> f32 {
+    let s = sigmoid(x);
     s * (1.0 - s)
 }
-/// Sigmoid derivative function (f64)
-pub fn sigmoid_derivativef64(x : f64) -> f64 {
-    let s : f64 = sigmoidf64(x);
-    s * (1.0 - s)
+/// Calculates the dot product of 2 vectors
+pub fn dot_product<T: Into<f32> + Copy>(x: &[T], y: &[T]) -> f32 {
+    x.iter().zip(y.iter()).map(|(&i, &j)| i.into() * j.into()).sum()
 }
-
-/// Calculates the dot product of 2 vectors (f32)
-pub fn dot_productf32(x: &[f32], y: &[f32]) -> f32 {
-    return x.iter().zip(y.iter()).map(|(&i, &j)| i * j).sum()
-}
-/// Calculates the dot product of 2 vectors (f64)
-pub fn dot_productf64(x: &[f64], y: &[f64]) -> f64 {
-    return x.iter().zip(y.iter()).map(|(&i, &j)| i * j).sum()
-}
-
 

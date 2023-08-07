@@ -48,15 +48,11 @@ Implementations:
 
 Fairly self-explanatory, you can convert a 32 bit float to a 16-bit one, as well as do all your standard operations on it (Division, multiplication, addition and subtraction).
 
-### - `sigmoid(x : f32/f64) -> f32/f64`
+### - `sigmoid(x : f32) -> f32`
 
-There are 2 sigmoid implementations. `sigmoidf32(x : f32)` and `sigmoidf64(x :f64)`. They both behave identically - Except one allows for higher-precision floating point numbers.
+### - `sigmoid_derivative(x : f32) -> f32`
 
-### - `sigmoid_derivative(x : f32/f64) -> f32/f64`
-
-Similar to `sigmoid()`, there's 2 different implementations. `sigmoid_derivativef32(x : f32)` and `sigmoid_derivativef64(x : f64)`. They both behave the same except one allows for higher-precision floating point numbers.
-
-### - `dot_product(x : &[f32/f64], y : &[f32/f64]) -> f32/f64`
+### - `dot_product(x : &[f32], y : &[f32]) -> f32`
 
 There are two implementations `dot_productf32(x : &[f32], y : &[f32]) -> f32` and `dot_productf6432(x : &[f64], y : &[f64]) -> f64` for different accuracies. They all compute the dot product of two vectors and behave identically to one another, except some having higher accuracies than others.
 
