@@ -1,6 +1,6 @@
 # Azalea
 
-Juniper's standard libraries for rust projects.
+June's standard libraries for rust projects.
 
 Has a lot of common code that is often important, or copied to many places in a project.
 
