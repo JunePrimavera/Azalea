@@ -1,8 +1,6 @@
 ## Math.rs documentation
 
-### - `sigmoid(x : f32) -> f32`
 
-### - `sigmoid_derivative(x : f32) -> f32`
 
 ### - `dot_product(x : &[f32], y : &[f32]) -> f32`
 

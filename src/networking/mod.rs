@@ -1,2 +1,2 @@
-pub mod networking;
 pub mod address;
+pub mod networking;

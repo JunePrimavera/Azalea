@@ -8,7 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf89a54a-f4f9-4869-bafe-60e5e8c1a7b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/ml.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/ml.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/math.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/math.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/device.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/device.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fileutils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/fileutils.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/math.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/math.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/rand.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/rand.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networking/address.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/address.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networking/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/networking/networking.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/networking.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

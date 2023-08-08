@@ -6,12 +6,12 @@ Jul 24 2023
 use std::fs::File;
 use std::io::Read;
 use std::ops::Range;
-use std::time::{SystemTime, UNIX_EPOCH};
 
 /// Generates random bytes
 fn generate_random_bytes(buffer: &mut [u8]) {
     let mut rng = File::open("/dev/urandom").expect("Cant access /dev/urandom!");
-    rng.read_exact(buffer).expect("Error generating random bytes");
+    rng.read_exact(buffer)
+        .expect("Error generating random bytes");
 }
 
 /// Generates a random 32-bit float
@@ -31,7 +31,7 @@ pub fn random_f64(range: Range<f64>) -> f64 {
 }
 
 /// Generates a random 32-bit float vector
-pub fn random_vecf32(values : usize, range : Range<f32>) -> Vec<f32> {
+pub fn random_vecf32(values: usize, range: Range<f32>) -> Vec<f32> {
     let mut vec = vec![];
     for _ in 0..values {
         vec.push(random_f32(range.clone()))
@@ -40,7 +40,7 @@ pub fn random_vecf32(values : usize, range : Range<f32>) -> Vec<f32> {
 }
 
 /// Generates a random 64-bit float vector
-pub fn random_vecf64(values : usize, range : Range<f64>) -> Vec<f64> {
+pub fn random_vecf64(values: usize, range: Range<f64>) -> Vec<f64> {
     let mut vec = vec![];
     for _ in 0..values {
         vec.push(random_f64(range.clone()))
