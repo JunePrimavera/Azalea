@@ -31,17 +31,19 @@ pub fn random_f64(range: Range<f64>) -> f64 {
 }
 
 /// Generates a random 32-bit float vector
-pub fn random_vecf32(values : usize, range : Range<f32>) {
+pub fn random_vecf32(values : usize, range : Range<f32>) -> Vec<f32> {
     let mut vec = vec![];
     for _ in 0..values {
         vec.push(random_f32(range.clone()))
     }
+    vec
 }
 
 /// Generates a random 64-bit float vector
-pub fn random_vecf64(values : usize, range : Range<f64>) {
+pub fn random_vecf64(values : usize, range : Range<f64>) -> Vec<f64> {
     let mut vec = vec![];
     for _ in 0..values {
         vec.push(random_f64(range.clone()))
     }
+    vec
 }
