@@ -8,10 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf89a54a-f4f9-4869-bafe-60e5e8c1a7b8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/math.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/math.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/rand.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/rand.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
