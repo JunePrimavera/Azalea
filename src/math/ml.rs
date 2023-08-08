@@ -1,6 +1,6 @@
 /*
 Copyright Juniper Gardiner - MIT
-Jul 24 2023
+Aug 8 2023
 */
 
 use math::math::sigmoid;
@@ -21,16 +21,15 @@ pub fn compute(weights: &[Vec<Vec<f32>>], biases: &[Vec<f32>], input: &[f32]) ->
     let mut layer_outputs: Vec<Vec<f32>> = Vec::new();
     layer_outputs.push(input.to_vec());
     for (layer_weights, layer_biases) in weights.iter().zip(biases.iter()) {
-        let mut layer_output = Vec::new();
+        let mut layer_output = Vec::with_capacity(layer_weights.len());
         for neuron_weights in layer_weights {
-            layer_output.push(sigmoid(
-                neuron_weights
-                    .iter()
-                    .zip(layer_outputs.last().unwrap().iter())
-                    .map(|(&weight, &input_value)| weight * input_value)
-                    .sum::<f32>()
-                    + layer_biases[0],
-            ));
+            let weighted_sum = neuron_weights
+                .iter()
+                .zip(layer_outputs.last().unwrap().iter())
+                .map(|(&weight, &input_value)| weight * input_value)
+                .sum::<f32>()
+                + layer_biases[0];
+            layer_output.push(sigmoid(weighted_sum));
         }
         layer_outputs.push(layer_output);
     }
@@ -85,4 +84,15 @@ pub fn generate_nn_wb(
         generate_nn_w(hidden_layers, input_size, output_size),
         generate_nn_b(hidden_layers, input_size, output_size),
     )
+}
+
+/// Back propagation function
+pub fn backpropagation(
+    weights: &mut [Vec<Vec<f32>>],
+    biases: &mut [Vec<f32>],
+    input: &[f32],
+    target: &[f32],
+    learning_rate: f32,
+) {
+    // TODO because math is hard
 }
