@@ -94,5 +94,48 @@ pub fn backpropagation(
     target: &[f32],
     learning_rate: f32,
 ) {
-    // TODO because math is hard
+    let layer_outputs = compute(weights, biases, input);
+    let output_layer_delta = layer_outputs
+        .last()
+        .unwrap()
+        .iter()
+        .zip(target.iter())
+        .map(|(output, target)| output - target)
+        .collect::<Vec<f32>>();
+    let mut layer_deltas = vec![output_layer_delta];
+    for i in (1..weights.len()).rev() {
+        let delta = &layer_deltas.last().unwrap();
+        let weights = &weights[i];
+        let mut layer_delta = Vec::with_capacity(weights[0].len());
+        for j in 0..weights[0].len() {
+            let weighted_delta = weights.iter().enumerate()
+                .map(|(i, neuron_weights)| neuron_weights[j] * delta[i])
+                .sum();
+            layer_delta.push(weighted_delta);
+        }
+
+        layer_deltas.push(layer_delta);
+    }
+    layer_deltas.reverse();
+    for i in 0..weights.len() {
+        let prev_output = if i == 0 { input } else { &layer_outputs[i - 1] };
+        for j in 0..weights[i].len() {
+            for k in 0..weights[i][j].len() {
+                let mut weighted_sum = 0.0;
+                for (_l, v) in prev_output.iter().enumerate() {
+                    weighted_sum += weights[i][j][k] * *v;
+                }
+                let gradient = learning_rate
+                    * layer_deltas[i][j]
+                    * (weighted_sum / prev_output.len() as f32);
+                weights[i][j][k] -= gradient;
+            }
+        }
+    }
+    for i in 0..biases.len() {
+        for j in 0..biases[i].len() {
+            let bias_gradient = learning_rate * layer_deltas[i][j];
+            biases[i][j] -= bias_gradient;
+        }
+    }
 }
