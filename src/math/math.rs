@@ -31,15 +31,16 @@ pub fn loss(predicted: &[f32], target: &[f32]) -> f32 {
 
 /// Computes a neural network from the given weights and biases (MLP)
 pub fn compute(weights: &[Vec<Vec<f32>>], biases: &[Vec<f32>], input: &[f32]) -> Vec<Vec<f32>> {
-    let mut layer_outputs = Vec::with_capacity(weights.len() + 1);
+    let mut layer_outputs : Vec<Vec<f32>> = Vec::new();
     layer_outputs.push(input.to_vec());
     for (layer_weights, layer_biases) in weights.iter().zip(biases.iter()) {
-        let previous_output = layer_outputs.last().unwrap();
-        let mut layer_output = Vec::with_capacity(layer_weights.len());
+        let mut layer_output = Vec::new();
         for neuron_weights in layer_weights {
-            let weighted_sum = neuron_weights.iter().zip(previous_output.iter()).map(|(&weight, &input_value)| weight * input_value).sum::<f32>();
-            let neuron_output = sigmoid(weighted_sum + layer_biases[0]);
-            layer_output.push(neuron_output);
+            layer_output.push(
+                sigmoid(
+                    neuron_weights.iter().zip(layer_outputs.last().unwrap().iter())
+                        .map(|(&weight, &input_value)| weight * input_value).sum::<f32>() + layer_biases[0])
+            );
         }
         layer_outputs.push(layer_output);
     }
