@@ -1,7 +1,5 @@
 ## Math.rs documentation
 
-
-
 ### - `dot_product(x : &[f32], y : &[f32]) -> f32`
 
 
